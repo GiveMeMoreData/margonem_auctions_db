@@ -1,7 +1,7 @@
 import pyodbc
 
 
-#### TĄ LINIJKĘ NALEŻY ZMODYFIKOWAĆ BY POŁĄCZYĆ SIĘ Z ODPOWIEDNIĄ BAZĄ  ####
+#### TĄ LINIJKĘ NALEŻY ZMODYFIKOWAĆ BY POŁĄCZYĆ SIĘ Z BAZĄ  ####
 cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=localhost;DATABASE=master;UID=sa;PWD=Bartusus11')
 
 def query_table(table_name):
@@ -18,7 +18,6 @@ def query_data(query):
     cursor.close()
     return rows
 
-
 def query_run(query):
     cursor = cnxn.cursor()
     try:
@@ -31,7 +30,6 @@ def query_run(query):
 
 def filter_table_by(table,key,value):
     query = f"select * from {table} where {key}={value}"
-
 
 def add_row(table_name,col_names, values_list):
     cursor = cnxn.cursor()
@@ -48,7 +46,6 @@ def get_col_names_list(table_name):
         names.append(row.column_name)
     cursor.close()
     return names
-
 
 def get_data_info(table_name):
     cursor = cnxn.cursor()
